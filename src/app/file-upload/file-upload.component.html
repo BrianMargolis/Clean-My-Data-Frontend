@@ -1,1 +1,8 @@
-<input #fileInput type="file" (change)="upload()" >
+<h2>Upload a CSV file!</h2>
+<div>
+    <input #fileInput type="file">
+    <button (click)="upload()">Upload</button>
+</div>
+<p *ngIf="alert">
+    {{alert}}
+</p>
