@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, ViewChild, Output } from '@angular/core';
 import {
   Ng4FilesStatus,
   Ng4FilesSelected
@@ -11,6 +11,8 @@ import { Http, RequestOptions, Headers } from '@angular/http';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent {
+  @Output() onUpload = new EventEmitter<string>();
+
   @ViewChild('fileInput') fileInput
   alert = ""
   constructor(private http: Http) { }
@@ -33,8 +35,10 @@ export class FileUploadComponent {
 
     this.alert = ""
     this.http
-      .post('http://127.0.0.1:5000/', formData)
-      .subscribe();
+      .post('http://127.0.0.1:5000/upload', formData)
+      .subscribe(res => {
+        var body = JSON.parse(res.text());
+      });
 
   }
 }
