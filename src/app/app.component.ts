@@ -10,5 +10,8 @@ import {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  file_id = ""
+  onUpload(file_id: string) {
+    this.file_id = file_id;
+  }
 }
