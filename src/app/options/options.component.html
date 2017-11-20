@@ -1,0 +1,4 @@
+<div *ngFor="let key of optionKeys">
+  <label for="{{key}}">{{key}}</label>
+  <input type="text" id="{{key}}" [(ngModel)]="options[key]">
+</div>

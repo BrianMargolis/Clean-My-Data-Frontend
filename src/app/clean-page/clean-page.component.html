@@ -1,4 +1,11 @@
-{{fileId}}
-<button (click)="outlierDetection()">Outlier Detection</button>
+<p>Your file ID: {{fileId}}</p>
+<!-- <button (click)="outlierDetection()">Outlier Detection</button>
 <button (click)="fuzzyMatching()">Fuzzy Matching</button>
-<button (click)="multipleRepresentation()">Multiple Representation Matching</button>
+<button (click)="multipleRepresentation()">Multiple Representation Matching</button> -->
+<div *ngFor="let optionSection of optionSections">
+    <h3>{{optionSection.title}}</h3>
+    <label>Enabled?</label>
+    <input type="checkbox" [(ngModel)]="options[optionSection.title]">
+    <app-options *ngIf="options[optionSection.title]" [optionKeys]="optionSection.keys"></app-options>
+</div>
+<button (click)="clean()">Clean My Data</button> 
