@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { OptionsComponent } from '../options/options.component'
 
 @Component({
   selector: 'app-clean-page',
@@ -16,21 +17,21 @@ export class CleanPageComponent {
   {
     "title": "Outlier Detection",
     keys: ["d", "e", "f"]
+  },
+  {
+    "title": "Pattern Matching",
+    keys: ["g", "h", "i"]
   }]
 
   constructor(private http: Http) { }
 
-  outlierDetection() {
-    this.http
-      .post('http://127.0.0.1:5000/outlier_detection', { "file_id": this.fileId })
-      .subscribe(res => {
-        console.log(res)
-      });
+  optionChange(optionSectionTitle: string, options) {
+    this.options[optionSectionTitle] = options
   }
 
   clean() {
     this.http
-      .post('http://127.0.0.1:5000/clean', { "file_id": this.fileId, "options": this.options })
+      .post('http://127.0.0.1:5000/clean', { "file_name": this.fileId, "options": this.options })
       .subscribe(res => {
         console.log(res)
       });

@@ -8,12 +8,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class OptionsComponent implements OnInit {
   @Input() optionKeys: string[] = [];
   // @Output() options = new EventEmitter<object>();
-  options = {}
+  optionValues = {}
+  @Output() optionChange = new EventEmitter();
   constructor() { }
 
-  set option(k) {
-    console.log(k)
+  setOption(key, val) {
+    this.optionValues[key] = val;
+    this.optionChange.emit(this.optionValues)
   }
+  
   ngOnInit() {
   }
 

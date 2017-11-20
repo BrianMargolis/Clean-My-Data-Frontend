@@ -38,7 +38,7 @@ export class FileUploadComponent {
       .post('http://127.0.0.1:5000/upload', formData)
       .subscribe(res => {
         var body = JSON.parse( res.text());
-        var file_id = body['file_id'];
+        var file_id = body['file_name'];
         this.onUpload.emit(file_id);
       });
 

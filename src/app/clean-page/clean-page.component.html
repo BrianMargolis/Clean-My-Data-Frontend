@@ -5,7 +5,7 @@
 <div *ngFor="let optionSection of optionSections">
     <h3>{{optionSection.title}}</h3>
     <label>Enabled?</label>
-    <input type="checkbox" [(ngModel)]="options[optionSection.title]">
-    <app-options *ngIf="options[optionSection.title]" [optionKeys]="optionSection.keys"></app-options>
+    <input type="checkbox" [(ngModel)]="options[optionSection.title+' Enabled']">
+    <app-options *ngIf="options[optionSection.title+' Enabled']" [optionKeys]="optionSection.keys" (optionChange)="optionChange(optionSection.title, $event)"></app-options>
 </div>
 <button (click)="clean()">Clean My Data</button> 
