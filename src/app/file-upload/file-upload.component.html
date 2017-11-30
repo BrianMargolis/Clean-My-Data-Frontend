@@ -1,8 +1,8 @@
-<h2>Upload a CSV file!</h2>
-<div>
-    <input #fileInput type="file">
-    <button (click)="upload()">Upload</button>
+<h2 class="title">upload a csv file!</h2>
+<div class="content">
+    <input class="file" #fileInput type="file">
+    <button class="upload" (click)="upload()">Upload</button>
 </div>
-<p *ngIf="alert">
+<p class="alert" *ngIf="alert">
     {{alert}}
 </p>
