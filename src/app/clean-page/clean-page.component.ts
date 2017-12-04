@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { OptionsComponent } from '../options/options.component'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
