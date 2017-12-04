@@ -1,11 +1,17 @@
 <p>Your file ID: {{fileId}}</p>
-<!-- <button (click)="outlierDetection()">Outlier Detection</button>
-<button (click)="fuzzyMatching()">Fuzzy Matching</button>
-<button (click)="multipleRepresentation()">Multiple Representation Matching</button> -->
-<div *ngFor="let optionSection of optionSections">
-    <h3>{{optionSection.title}}</h3>
-    <label>Enabled?</label>
-    <input type="checkbox" [(ngModel)]="options[optionSection.title+' Enabled']">
-    <app-options *ngIf="options[optionSection.title+' Enabled']" [optionKeys]="optionSection.keys" (optionChange)="optionChange(optionSection.title, $event)"></app-options>
+<label>File has headers?</label>
+<input type="checkbox" [(ngModel)]="options['file_has_headers']">
+<div *ngFor="let cleaningFunctionName of cleaningFunctionNames">
+    <h3>{{cleaningFunctions[cleaningFunctionName]['friendly_text']}}</h3>
+    <p>{{cleaningFunctions[cleaningFunctionName]['friendly_subtext']}}</p>
+    <label>Enabled</label>
+    <input type="checkbox" [(ngModel)]="cleaningFunctions[cleaningFunctionName]['enabled']">
+    <div *ngIf="cleaningFunctions[cleaningFunctionName]['enabled']">
+        <div *ngFor="let option of cleaningFunctions[cleaningFunctionName]['options']">
+            <label for="{{option.name}}">{{option.friendly_text}}</label>
+            <input type="text" id="{{option.name}}" placeholder="{{option.tip}}" [(ngModel)]="option['value']">
+            <span class="tip">{{option.tip}}</span>
+        </div>
+    </div>
 </div>
-<button (click)="clean()">Clean My Data</button> 
+<button (click)="identify_errors()">Clean My Data</button>
