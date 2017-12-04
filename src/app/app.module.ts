@@ -8,12 +8,14 @@ import { Ng4FilesModule } from 'angular4-files-upload';
 import { AppComponent } from './app.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { CleanPageComponent } from './clean-page/clean-page.component';
+import { OutputComponent } from './output/output.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileUploadComponent,
-    CleanPageComponent
+    CleanPageComponent,
+    OutputComponent
   ],
   imports: [
     BrowserModule,

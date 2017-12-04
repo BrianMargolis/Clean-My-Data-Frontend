@@ -15,3 +15,6 @@
     </div>
 </div>
 <button (click)="identify_errors()">Clean My Data</button>
+<div *ngIf="response">
+    <app-output [response]="response"></app-output>
+</div>

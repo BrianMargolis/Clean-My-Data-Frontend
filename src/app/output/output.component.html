@@ -1,0 +1,14 @@
+<h2>Error Rates</h2>
+<table>
+  <tr *ngFor="let row of error_rate_table">
+    <th>{{row['title']}}</th>
+    <th *ngFor="let value of row['value']">{{value}}</th>
+  </tr>
+</table>
+<h2>Summary Stats</h2>
+<table>
+  <tr *ngFor="let row of summary_stats_table">
+    <th>{{row['title']}}</th>
+    <th *ngFor="let value of row['value']">{{value}}</th>
+  </tr>
+</table>

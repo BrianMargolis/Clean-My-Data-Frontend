@@ -61,8 +61,7 @@ export class CleanPageComponent implements OnInit {
 
 
   cleaningFunctionNames = ['duplicates', 'wrong_types', 'outliers']
-
-  badLines: number[][] = [];
+  response = null
   downloadUrl = ""
 
   constructor(private http: Http) { }
@@ -76,10 +75,11 @@ export class CleanPageComponent implements OnInit {
   }
 
   identify_errors() {
+    this.response = null;
     this.http
       .post('http://127.0.0.1:5000/identify_errors', { "file_name": this.fileId, "options": this.options })
       .subscribe(res => {
-        this.badLines = res.json();
+        this.response = res.json();
       });
   }
 
