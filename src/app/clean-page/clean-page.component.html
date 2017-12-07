@@ -1,20 +1,31 @@
-<p>Your file ID: {{fileId}}</p>
-<label>File has headers?</label>
-<input type="checkbox" [(ngModel)]="options['file_has_headers']">
-<div *ngFor="let cleaningFunctionName of cleaningFunctionNames">
-    <h3>{{cleaningFunctions[cleaningFunctionName]['friendly_text']}}</h3>
-    <p>{{cleaningFunctions[cleaningFunctionName]['friendly_subtext']}}</p>
-    <label>Enabled</label>
-    <input type="checkbox" [(ngModel)]="cleaningFunctions[cleaningFunctionName]['enabled']">
-    <div *ngIf="cleaningFunctions[cleaningFunctionName]['enabled']">
-        <div *ngFor="let option of cleaningFunctions[cleaningFunctionName]['options']">
-            <label for="{{option.name}}">{{option.friendly_text}}</label>
-            <input type="text" id="{{option.name}}" placeholder="{{option.tip}}" [(ngModel)]="option['value']">
-            <span class="tip">{{option.tip}}</span>
+<div class="row">
+    <div class="col-md-6">
+        <h2 class="title">Error detection settings:</h2>
+        <label>File has headers?</label>
+        <input type="checkbox" [(ngModel)]="cleaningFunctions['file_has_headers']">
+        <div *ngFor="let cleaningFunctionName of cleaningFunctionNames">
+            <h4>{{cleaningFunctions[cleaningFunctionName]['friendly_text']}}</h4>
+            <p>{{cleaningFunctions[cleaningFunctionName]['friendly_subtext']}}</p>
+            <label>Enabled</label>
+            <input type="checkbox" [(ngModel)]="cleaningFunctions[cleaningFunctionName]['enabled']">
+            <div *ngIf="cleaningFunctions[cleaningFunctionName]['enabled']">
+                <div *ngFor="let option of cleaningFunctions[cleaningFunctionName]['options']">
+                    <label for="{{option.name}}">{{option.friendly_text}}</label>
+                    <input type="text" id="{{option.name}}" placeholder="{{option.tip}}" [(ngModel)]="option['value']">
+                    <span class="tip">{{option.tip}}</span>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="response">
+            <app-output [response]="response"></app-output>
         </div>
     </div>
 </div>
-<button (click)="identify_errors()">Clean My Data</button>
-<div *ngIf="response">
-    <app-output [response]="response"></app-output>
+<div class="row">
+    <div class="clean_button">
+        <button (click)="identify_errors()">Find Errors</button>
+    </div>
 </div>

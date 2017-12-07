@@ -9,23 +9,12 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class CleanPageComponent implements OnInit {
   @Input() fileId = ""
-  options = {
-    "file_has_headers": false,
-    "duplicates": {
-      "enabled": false,
-    },
-    "outliers": {
-      "enabled": false,
-    },
-    "wrong_types": {
-      "enabled": false,
-    },
-  }
 
   cleaningFunctions = {
+    "file_has_headers": false,
     "duplicates": {
       "friendly_text": "Check for duplicates?",
-      "friendly_subtext": "",
+      "friendly_subtext": "Applies to strictly string columns only.",
       "enabled": false,
       "options": [{
         "name": "fuzzy",
@@ -35,7 +24,7 @@ export class CleanPageComponent implements OnInit {
       }, {
         "name": "fuzzy_ratio_threshold",
         "friendly_text": "Fuzzy matching ratio threshold:",
-        "value": 0,
+        "value": 70,
         "tip": "Between 0 and 100. Higher number = stricter matching."
       }
       ]
@@ -70,14 +59,10 @@ export class CleanPageComponent implements OnInit {
 
   }
 
-  optionChange(optionSectionTitle: string, options) {
-    this.options[optionSectionTitle] = options
-  }
-
   identify_errors() {
     this.response = null;
     this.http
-      .post('http://127.0.0.1:5000/identify_errors', { "file_name": this.fileId, "options": this.options })
+      .post('http://127.0.0.1:5000/identify_errors', { "file_name": this.fileId, "options": this.cleaningFunctions })
       .subscribe(res => {
         this.response = res.json();
       });

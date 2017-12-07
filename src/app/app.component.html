@@ -1,2 +1,5 @@
-<app-file-upload (onUpload)=onUpload($event)></app-file-upload>
-<app-clean-page *ngIf="file_id" [fileId]="file_id"></app-clean-page>
+<div class="container-fluid">
+    <h1 class="title">Clean My Data</h1>
+    <app-file-upload (onUpload)=onUpload($event)></app-file-upload>
+    <app-clean-page *ngIf="file_id" [fileId]="file_id"></app-clean-page>
+</div>
