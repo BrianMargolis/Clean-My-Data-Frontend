@@ -39,12 +39,7 @@ export class CleanPageComponent implements OnInit {
       "friendly_text": "Check for outliers?",
       "friendly_subtext": "Applies to strictly numerical columns only.",
       "enabled": false,
-      "options": [{
-        "name": "alpha",
-        "friendly_text": "Alpha value for confidence interval:",
-        "value": .95,
-        "tip": "Between 0 and 1."
-      }]
+      "options": []
     }
   }
 

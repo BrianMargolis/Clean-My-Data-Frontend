@@ -43,7 +43,7 @@ export class OutputComponent implements OnInit {
       "value": summary_stats['standard_deviation']
     })
     this.summary_stats_table.push({
-      "title": "Confidence Interval",
+      "title": "95% Confidence Interval",
       "value": summary_stats['confidence_interval']
     })
     this.summary_stats_table.push({
